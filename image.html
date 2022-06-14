@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<style>
+:root {
+  --xwidth: 100px;
+}
+.innerDiv{
+	width: 30%;
+	display:inline-block;
+	text-align:center;	
+}
+
+.textbox2{
+	border: 1px solid orange;
+	font-size:45px;
+	font-color:blue;
+	width: 200px;
+	height:60px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.textbox{
+	border: 1px solid orange;
+	font-size:45px;
+	font-color:blue;
+	width: var(--xwidth);
+	height:var(--xwidth);
+	text-align:center;
+	font-weight:bold;
+	border-radius:var(--xwidth);
+}
+
+.button{
+	font-size:20px;
+	width: 100px;
+	height:40px;
+	background-color:orange;
+	border: 0;
+	border-radius:5px;
+	cursor:pointer;
+}
+</style>
+
+<script>
+function getPrevNumber(){
+	let currentNumber = document.getElementById("currentText").value;
+	console.log(currentNumber);
+	let prevNumber = parseInt(currentNumber) - 1;
+	console.log(prevNumber);
+	document.getElementById("beforeText").value = prevNumber;
+	document.getElementById("afterText").value = "";
+}
+function getNextNumber(){
+	let currentNumber = document.getElementById("currentText").value;
+	console.log(currentNumber);
+	let nextNumber = parseInt(currentNumber) + 1;
+	console.log(nextNumber);
+	document.getElementById("beforeText").value = "";
+	document.getElementById("afterText").value = nextNumber;
+}
+
+function getBothNumber(){
+	let currentNumber = document.getElementById("currentText").value;
+	let nextNumber = parseInt(currentNumber) + 1;
+	let prevNumber = parseInt(currentNumber) - 1;
+	document.getElementById("beforeText").value = prevNumber;
+	document.getElementById("afterText").value = nextNumber;
+}
+
+function refresh(){
+	document.getElementById("currentText").value="";
+	document.getElementById("beforeText").value = "";
+	document.getElementById("afterText").value = "";
+	document.getElementById("spanSeries").innerHTML= "";
+}
+
+function series(){
+	let currentNumber = document.getElementById("currentText").value;
+	let startNumber = 1;
+	if(parseInt(currentNumber) > 2){
+		startNumber = parseInt(currentNumber) - 2;
+	}
+	let endNumber = startNumber + 7;
+	var strNumbers= "";
+	for(var i=startNumber; i < endNumber -1; i++){
+		strNumbers += i + " - ";
+	}
+	strNumbers += endNumber; 
+	document.getElementById("spanSeries").innerHTML= strNumbers;
+}
+</script>
+<body>
+<div style="width: 90%;padding:5%;">			
+	<div class="innerDiv"> <input type="Button" value="<<<" class="button" onclick="javascript: location.href = 'index.html'" /></div>
+	<div class="innerDiv"> </div>
+	<div class="innerDiv"> </div>
+	<br/><br/><br/>
+	<img src="school.png" width="1024" height="695" />
+</div>
+
+</body>
+</html>
