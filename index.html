@@ -69,25 +69,41 @@ function getBothNumber(){
 }
 
 function refresh(){
-console.log("clear");
 	document.getElementById("currentText").value="";
 	document.getElementById("beforeText").value = "";
 	document.getElementById("afterText").value = "";
 }
+
+function series(){
+	let currentNumber = document.getElementById("currentText").value;
+	let startNumber = 1;
+	if(parseInt(currentNumber) > 2){
+		startNumber = parseInt(currentNumber) - 2;
+	}
+	let endNumber = startNumber + 7;
+	var strNumbers= "";
+	for(var i=startNumber; i < endNumber -1; i++){
+		strNumbers += i + " - ";
+	}
+	strNumbers += endNumber; 
+	document.getElementById("spanSeries").innerHTML= strNumbers;
+}
 </script>
 <body>
-<div style="width: 90%;padding:10%;">
+<div style="width: 90%;padding:5%;">
 	<div class="innerDiv"> <input type="Button" value="BEFORE" class="button" onclick="getPrevNumber()" /> </div>
 	<div class="innerDiv"> <input type="Button" value="<<  >>" class="button" onclick="getBothNumber()" /></div>
 	<div class="innerDiv"> <input type="Button" value="AFTER" class="button" onclick="getNextNumber()" /></div>
 	<br/><br/><br/>
 	<div class="innerDiv"><input id="beforeText" type="text" class="textbox" disabled /> </div>
-	<div class="innerDiv"><input id="currentText" type="text"  class="textbox" /> </div>
+	<div class="innerDiv"><input id="currentText" type="number" class="textbox" /> </div>
 	<div class="innerDiv"> <input id="afterText" type="text"  class="textbox" disabled /></div>
 	<br/><br/><br/>
-	<div class="innerDiv"> </div>
+	<div class="innerDiv"> <input type="Button" value="SERIES" class="button" onclick="series()" /></div>
 	<div class="innerDiv"> <input type="Button" value="CLEAR" class="button" onclick="refresh()" /></div>
 	<div class="innerDiv"> </div>
+	<br/><br/><br/>
+	<div style="width:100%;text-align:center;"><span id="spanSeries" class="textbox" style="padding-left:2px;"><span></div>
 </div>
 
 </body>
